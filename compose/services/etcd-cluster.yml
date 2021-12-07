@@ -1,0 +1,33 @@
+etcd-node1:
+  image: registry.cn-hangzhou.aliyuncs.com/daijulong/etcd:v3.4.13-alpine3.12
+  container_name: "${PROJECT_NAME}_etcd_cluster_node1"
+  command: etcd --name etcd-srv1 --data-dir=/var/lib/etcd/ --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://etcd-node1:2379 --initial-advertise-peer-urls http://etcd-node1:2380 --listen-peer-urls http://0.0.0.0:2380 --initial-cluster-token etcd-cluster-token --initial-cluster "etcd-srv1=http://etcd-node1:2380,etcd-srv2=http://etcd-node2:2380,etcd-srv3=http://etcd-node3:2380" --initial-cluster-state new
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+  tty: true
+  networks:
+    #@_NETWORK_@#:
+etcd-node2:
+  image: registry.cn-hangzhou.aliyuncs.com/daijulong/etcd:v3.4.13-alpine3.12
+  container_name: "${PROJECT_NAME}_etcd_cluster_node2"
+  command: etcd --name etcd-srv2 --data-dir=/var/lib/etcd/ --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://etcd-node2:2379 --initial-advertise-peer-urls http://etcd-node2:2380 --listen-peer-urls http://0.0.0.0:2380 --initial-cluster-token etcd-cluster-token --initial-cluster "etcd-srv1=http://etcd-node1:2380,etcd-srv2=http://etcd-node2:2380,etcd-srv3=http://etcd-node3:2380" --initial-cluster-state new
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+  tty: true
+  networks:
+    #@_NETWORK_@#:
+etcd-node3:
+  image: registry.cn-hangzhou.aliyuncs.com/daijulong/etcd:v3.4.13-alpine3.12
+  container_name: "${PROJECT_NAME}_etcd_cluster_node3"
+  command: etcd --name etcd-srv3 --data-dir=/var/lib/etcd/ --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://etcd-node3:2379 --initial-advertise-peer-urls http://etcd-node3:2380 --listen-peer-urls http://0.0.0.0:2380 --initial-cluster-token etcd-cluster-token --initial-cluster "etcd-srv1=http://etcd-node1:2380,etcd-srv2=http://etcd-node2:2380,etcd-srv3=http://etcd-node3:2380" --initial-cluster-state new
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+  tty: true
+  networks:
+    #@_NETWORK_@#:

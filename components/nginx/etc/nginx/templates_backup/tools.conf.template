@@ -1,0 +1,44 @@
+server {
+    listen ${HTTP_PORT};
+
+    server_name "pma.tools.${DOMAIN}";
+    access_log /dev/null  main;
+    error_log /dev/null error;
+
+    charset utf-8;
+
+    location / {
+        set $target http://phpmyadmin;
+        proxy_pass $target;
+    }
+}
+
+server {
+    listen ${HTTP_PORT};
+
+    server_name "pra.tools.${DOMAIN}";
+    access_log /dev/null  main;
+    error_log /dev/null error;
+
+    charset utf-8;
+
+    location / {
+        set $target http://phpredisadmin;
+        proxy_pass $target;
+    }
+}
+
+server {
+    listen 80;
+
+    server_name "portainer.tools.${DOMAIN}";
+    access_log /dev/null  main;
+    error_log /dev/null error;
+
+    charset utf-8;
+
+    location / {
+        set $target http://portainer:9000;
+        proxy_pass $target;
+    }
+}

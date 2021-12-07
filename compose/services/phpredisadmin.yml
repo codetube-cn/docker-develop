@@ -1,0 +1,10 @@
+#-------------------------------------
+# phpredisadmin
+#-------------------------------------
+phpredisadmin:
+  image: "erikdubbelboer/phpredisadmin"
+  container_name: "${PROJECT_NAME}_phpredisadmin"
+  env_file: ${PHPREDISADMIN_ENV_FILE}
+  tty: true
+  networks:
+    #@_NETWORK_@#:

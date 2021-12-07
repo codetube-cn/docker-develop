@@ -1,0 +1,22 @@
+#-------------------------------------
+# api
+#-------------------------------------
+api:
+  image: "golang:1.16.3-alpine3.13"
+  container_name: "${PROJECT_NAME}_api"
+  env_file: ${GOLANG_ENV_FILE}
+  tty: true
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+    - ${PROJECT_DIR}:/apps
+    - ${GOPATH_DIR}/api:/go
+  working_dir: /apps/api
+  environment:
+    - GIN_MODE=${GIN_MODE}
+  command: go run main.go
+  expose:
+    - 8080
+  networks:
+    #@_NETWORK_@#:

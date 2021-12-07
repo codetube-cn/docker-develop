@@ -1,0 +1,9 @@
+nacos:
+  image: nacos/nacos-server:${NACOS_VERSION}
+  container_name: ${PROJECT_NAME}_nacos
+  env_file: ${NACOS_ENV_FILE}
+  environment:
+    TZ: ${TIMEZONE}
+  tty: true
+  networks:
+    #@_NETWORK_@#:

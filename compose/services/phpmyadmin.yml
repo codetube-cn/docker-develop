@@ -1,0 +1,10 @@
+#-------------------------------------
+# phpmyadmin
+#-------------------------------------
+phpmyadmin:
+  image: "phpmyadmin/phpmyadmin"
+  container_name: "${PROJECT_NAME}_phpmyadmin"
+  env_file: ${PHPMYADMIN_ENV_FILE}
+  tty: true
+  networks:
+    #@_NETWORK_@#:

@@ -1,0 +1,14 @@
+server {
+    listen ${HTTP_PORT};
+
+    server_name "pra.tools.${DOMAIN}";
+    access_log /dev/null  main;
+    error_log /dev/null error;
+
+    charset utf-8;
+
+    location / {
+        set $target http://phpredisadmin;
+        proxy_pass $target;
+    }
+}

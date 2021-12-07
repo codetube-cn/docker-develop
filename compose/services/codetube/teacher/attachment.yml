@@ -1,0 +1,17 @@
+#-------------------------------------
+# 讲师附件服务
+#-------------------------------------
+teacher-attachment:
+  image: "golang:${GOLANG_VERSION}-alpine${GOLANG_ALPINE_VERSION}"
+  container_name: "${PROJECT_NAME}_teacher_attachment"
+  env_file: ${GOLANG_ENV_FILE}
+  tty: true
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+    - ${PROJECT_DIR}:/apps
+    - ${GOPATH_DIR}/teacher-attachment:/go
+  working_dir: /apps/teacher-attachment
+  networks:
+    #@_NETWORK_@#:

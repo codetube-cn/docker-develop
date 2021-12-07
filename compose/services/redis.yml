@@ -1,0 +1,20 @@
+#--------------------------------------------------------------------------
+# redis
+#--------------------------------------------------------------------------
+redis:
+  image: "redis:${REDIS_VERSION}-alpine"
+  container_name: "${PROJECT_NAME}_redis"
+  command: ["redis-server", "/etc/redis/redis.conf", "--requirepass ${REDIS_PASSWORD}"]
+  ports:
+    - "6379:6379"
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+    # 配置文件
+    - ./components/redis/etc/redis/redis.conf:/etc/redis/redis.conf
+    # 数据目录
+    - ./data/redis/data:/data
+  tty: true
+  networks:
+    #@_NETWORK_@#:

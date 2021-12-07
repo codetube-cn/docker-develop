@@ -1,0 +1,23 @@
+#--------------------------------------------------------------------------
+# goland
+#--------------------------------------------------------------------------
+goland:
+  image: "registry.jetbrains.team/p/prj/containers/projector-goland:latest"
+  container_name: "${PROJECT_NAME}_goland"
+  environment:
+    GOROOT: /go/go1.16
+    GOPATH: /gopath
+    GOPROXY: https://mirrors.aliyun.com/goproxy/
+    ORG_JETBRAINS_PROJECTOR_SERVER_HANDSHAKE_TOKEN: ${JETBRAINS_PROJECTOR_SERVER_HANDSHAKE_TOKEN}
+  volumes:
+    - type: bind
+      read_only: true
+      source: $HOME/.ssh
+      target: /home/projector-user/.ssh
+    - ${PROJECT_DIR}/projects:/home/projector-user/projects
+    - ${PROJECT_DIR}/config:/home/projector-user/.config/JetBrains
+    - ${PROJECT_DIR}/go:/go
+    - ${PROJECT_DIR}/gopath:/home/projector-user/gopath
+  tty: true
+  networks:
+    #@_NETWORK_@#:

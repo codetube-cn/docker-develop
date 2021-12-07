@@ -1,0 +1,28 @@
+#--------------------------------------------------------------------------
+# nginx
+#--------------------------------------------------------------------------
+nginx:
+  image: "nginx:${NGINX_VERSION}-alpine"
+  container_name: "${PROJECT_NAME}_nginx"
+  environment:
+    - DOMAIN=${DOMAIN}
+    - HTTP_PORT=${NGINX_HTTP_PORT}
+    - HTTPS_PORT=${NGINX_HTTPS_PORT}
+  volumes:
+    # 时区
+    - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
+    - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
+    # 配置
+    - ./components/nginx/etc/nginx/templates:/etc/nginx/templates
+    # auth 权限验证
+    - ./components/nginx/auth:/auth
+    # SSL证书目录
+    - ./components/nginx/etc/cert:/etc/cert
+    # 项目目录
+    - ${PROJECT_DIR}:/apps
+  ports:
+    - ${NGINX_HTTP_PORT}:80
+    - ${NGINX_HTTPS_PORT}:443
+  tty: true
+  networks:
+    #@_NETWORK_@#:
