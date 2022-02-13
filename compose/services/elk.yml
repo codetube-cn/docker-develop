@@ -1,0 +1,37 @@
+es01:
+  image: elasticsearch:${ELASTICSEARCH_VERSION}
+  container_name: elasticsearch-1
+  environment:
+    - cluster.name=elasticsearch
+    - bootstrap.memory_lock=true
+    - discovery.type=single-node
+    - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
+  volumes:
+    - ./data/elasticsearch/node01/data:/usr/share/elasticsearch/data
+  ports:
+    - 9200:9200
+  tty: true
+  deploy:
+    resources:
+      limits:
+        cpus: ${ELASTICSEARCH_LIMITS_CPU}
+        memory: ${ELASTICSEARCH_LIMITS_MEMORY}
+  networks:
+    #@_NETWORK_@#:
+kibana:
+  image: kibana:${ELASTICSEARCH_VERSION}
+  container_name: kibana
+  depends_on:
+    - es01
+  environment:
+    - ELASTICSEARCH_URL=http://es01:9200
+    - I18N_LOCALE=zh-CN
+  ports:
+    - 5601:5601
+  tty: true
+  networks:
+    #@_NETWORK_@#:
