@@ -1,0 +1,11 @@
+rabbitmq01:
+  image: rabbitmq:${RABBITMQ_VERSION}-management-alpine
+  container_name: rabbitmq-1
+  environment:
+    - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+    - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+  ports:
+    - ${RABBITMQ_PORT}:5672
+  tty: true
+  networks:
+    #@_NETWORK_@#:
