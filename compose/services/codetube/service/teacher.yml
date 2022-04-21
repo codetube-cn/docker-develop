@@ -13,5 +13,8 @@ service-teacher:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/service-teacher:/go
   working_dir: /apps/service-teacher
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

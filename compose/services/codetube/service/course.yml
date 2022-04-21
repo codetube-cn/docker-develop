@@ -13,5 +13,8 @@ service-course:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/service-course:/go
   working_dir: /apps/service-course
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

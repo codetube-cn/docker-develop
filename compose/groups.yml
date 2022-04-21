@@ -16,26 +16,26 @@ default:
 codetube:
   services:
     - nginx
-    - redis
-    - phpredisadmin
+#    - redis
+#    - phpredisadmin
     - codetube/gateway
-    - codetube/interface/admin
-    - codetube/interface/h5
-    - codetube/interface/teacher
+#    - codetube/interface/admin
+#    - codetube/interface/h5
+#    - codetube/interface/teacher
     - codetube/interface/web
-    - codetube/service/advertisement
-    - codetube/service/attachment
-    - codetube/service/course
-    - codetube/service/teacher
-    - codetube/service/user
-    - codetube/service/user-login
+#    - codetube/service/advertisement
+#    - codetube/service/attachment
+#    - codetube/service/course
+#    - codetube/service/teacher
+#    - codetube/service/user
+#    - codetube/service/user-login
     - codetube/service/user-register
-    - codetube/admin/advertisement
-    - codetube/admin/attachment
-    - codetube/admin/course
-    - codetube/admin/user
-    - codetube/teacher/attachment
-    - codetube/teacher/course
+#    - codetube/admin/advertisement
+#    - codetube/admin/attachment
+#    - codetube/admin/course
+#    - codetube/admin/user
+#    - codetube/teacher/attachment
+#    - codetube/teacher/course
   template: "docker-compose.yml"
   output: "docker-compose.yml"
   override: "force"

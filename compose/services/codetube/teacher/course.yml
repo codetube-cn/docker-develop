@@ -13,5 +13,8 @@ teacher-course:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/teacher-course:/go
   working_dir: /apps/teacher-course
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

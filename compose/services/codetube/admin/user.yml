@@ -13,5 +13,6 @@ admin-user:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/admin-user:/go
   working_dir: /apps/admin-user
+  command: go run main.go
   networks:
     #@_NETWORK_@#:

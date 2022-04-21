@@ -13,5 +13,8 @@ gateway:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/gateway:/go
   working_dir: /apps/gateway
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

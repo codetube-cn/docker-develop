@@ -13,5 +13,8 @@ service-advertisement:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/service-advertisement:/go
   working_dir: /apps/service-advertisement
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

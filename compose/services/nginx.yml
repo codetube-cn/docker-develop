@@ -13,7 +13,7 @@ nginx:
     - ./components/alpine/zoneinfo/${TIMEZONE}:/etc/localtime:ro
     - ./components/alpine/timezone/${TIMEZONE}:/etc/timezone:ro
     # 配置
-    - ./components/nginx/etc/nginx/templates:/etc/nginx/templates
+    - ./components/nginx/etc/nginx/${DEFAULT_GROUP}:/etc/nginx/templates
     # auth 权限验证
     - ./components/nginx/auth:/auth
     # SSL证书目录

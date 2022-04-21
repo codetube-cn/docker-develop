@@ -13,5 +13,8 @@ interface-admin:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/interface-admin:/go
   working_dir: /apps/interface-admin
+  command: go run main.go
+  expose:
+    - "8080"
   networks:
     #@_NETWORK_@#:

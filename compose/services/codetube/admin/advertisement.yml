@@ -13,5 +13,6 @@ admin-advertisement:
     - ${PROJECT_DIR}:/apps
     - ${GOPATH_DIR}/admin-advertisement:/go
   working_dir: /apps/admin-advertisement
+  command: go run main.go
   networks:
     #@_NETWORK_@#:
