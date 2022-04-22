@@ -16,8 +16,8 @@ default:
 codetube:
   services:
     - nginx
-#    - redis
-#    - phpredisadmin
+    - redis
+    - phpredisadmin
     - codetube/gateway
 #    - codetube/interface/admin
 #    - codetube/interface/h5
