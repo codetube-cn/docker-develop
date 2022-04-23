@@ -20,6 +20,7 @@ codetube:
     - phpredisadmin
     - codetube/gateway
 #    - codetube/interface/admin
+    - codetube/interface/api
 #    - codetube/interface/h5
 #    - codetube/interface/teacher
     - codetube/interface/web
