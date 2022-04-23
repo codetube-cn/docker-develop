@@ -29,7 +29,7 @@ codetube:
 #    - codetube/service/course
 #    - codetube/service/teacher
 #    - codetube/service/user
-#    - codetube/service/user-login
+    - codetube/service/user-login
     - codetube/service/user-register
 #    - codetube/admin/advertisement
 #    - codetube/admin/attachment
