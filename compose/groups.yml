@@ -26,7 +26,7 @@ codetube:
     - codetube/interface/web
 #    - codetube/service/advertisement
 #    - codetube/service/attachment
-#    - codetube/service/course
+    - codetube/service/course
 #    - codetube/service/teacher
 #    - codetube/service/user
     - codetube/service/user-login
